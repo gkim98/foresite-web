@@ -32,6 +32,7 @@ const mapStateToProps = (state) => {
     };
 };
 
+// retrieves reports for markers
 const mapDispatchToProps = (dispatch) => ({
     getReports: () => dispatch(startGetReports())
 });
