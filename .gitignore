@@ -22,3 +22,4 @@ yarn-error.log*
 
 src/hidden
 src/firebase/firebaseConfig.js
+public/index.html

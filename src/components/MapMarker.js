@@ -6,6 +6,7 @@ import { openMarkerInfo, updateMarkerInfo } from '../actions/settings';
 class MapMarker extends React.Component {
 
     updateMarkerInfo = () => {
+        console.log(this.props.report)
         this.props.openMarkerInfo()
         this.props.updateMarkerInfo(this.props.report)
     }
