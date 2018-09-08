@@ -10,7 +10,7 @@
     border-radius: 3px;
     padding: 20px;
 
-    animation: fadeIn .5s ease-out;
+    animation: fadeIn .3s ease-out;
 }
 
 @keyframes fadeIn {

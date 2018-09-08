@@ -17,7 +17,7 @@ class MapContainer extends React.Component {
             <div>
                 { this.props.settings.showMarkerInfo && <MarkerInfo /> }
                 <Map 
-                    reports={this.props.reports}
+                    //reports={this.props.reports}
                 />
             </div>
         )

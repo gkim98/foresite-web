@@ -18,10 +18,11 @@ const mapEnvironment = compose(
             containerElement: <div style={{ height: `600px`, width: `100%` }} />,
             mapElement: <div style={{ height: `100%` }} />
         }),
-        withScriptjs,
+        //withScriptjs,
         withGoogleMap,
         lifecycle({
             componentDidMount() {
+                console.log(google)
                 const DirectionsService = new google.maps.DirectionsService();
           
                 DirectionsService.route({
@@ -43,16 +44,15 @@ const mapEnvironment = compose(
 
 const MapLayout = (props) => {
     // creates markers from redux store
-    const markers = props.reports.map((report, i) => {
-        console.log(report);
-        return (
-            <MapMarker
-                key={i}
-                report={report}
-                position={{lat: report.latitude, lng: report.longitude}}
-            />
-        )
-    });
+    // const markers = props.reports.map((report, i) => {
+    //     return (
+    //         <MapMarker
+    //             key={i}
+    //             report={report}
+    //             position={{lat: report.latitude, lng: report.longitude}}
+    //         />
+    //     )
+    // });
 
     return (
         <GoogleMap
@@ -60,7 +60,6 @@ const MapLayout = (props) => {
             center={{lat: 39.951544406619306, lng: -75.19083540348124}}
             onClick={props.closeMarkerInfo}
         >
-            {markers}
             {props.directions && <DirectionsRenderer directions={props.directions} />}
         </GoogleMap>
     );
