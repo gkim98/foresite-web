@@ -1,8 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import MapMarker from './MapMarker';
 
 const Map = withScriptjs(withGoogleMap((props) => {
+
+    const markers = props.points.map((point, i) => (
+        <MapMarker
+            key={i}
+        />
+    ));
 
     return (
         <GoogleMap
@@ -14,4 +21,10 @@ const Map = withScriptjs(withGoogleMap((props) => {
     );
 })) 
 
-export default Map;
+const mapStateToProps = (state) => {
+    return {
+        points: state.points
+    };
+};
+
+export default connect(mapStateToProps)(Map);

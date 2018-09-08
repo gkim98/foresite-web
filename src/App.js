@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+
 import './App.css';
 import AppRouter from './routers/AppRouter';
 
@@ -8,9 +10,9 @@ import MapPage from './pages/MapPage';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Provider className="App" store={this.props.store}>
         <MapPage />
-      </div>
+      </Provider>
     );
   }
 }
