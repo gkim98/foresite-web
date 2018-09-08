@@ -8,7 +8,8 @@ class DirectionsPage extends Component {
     render() {
         return (
             <div>
-                <MapWithADirectionsRenderer coordinates
+                <MapWithADirectionsRenderer originLat={originLat} originLng={originLng} destLat={destLat}
+                                            destLng={destLng}
                 />
             </div>
         );

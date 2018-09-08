@@ -7,7 +7,7 @@ import MarkerInfo from './MarkerInfo';
 const Map = withScriptjs(withGoogleMap((props) => {
 
     const markers = props.reports.map((report, i) => {
-        console.log(report)
+        console.log(report);
         return (
             <MapMarker
                 key={i}
@@ -29,7 +29,7 @@ const Map = withScriptjs(withGoogleMap((props) => {
         </div>
         
     );
-}))
+}));
 
 const mapStateToProps = (state) => {
     return {
