@@ -1,12 +1,12 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+//import PropTypes from 'prop-types';
+//import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
+//import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
+//import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
