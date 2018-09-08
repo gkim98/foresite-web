@@ -1,0 +1,25 @@
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.navbar li,
+.navbar li:link,
+.navbar li:visited {
+  padding: 20px;
+  color: white;
+  height: 80%;
+}
+
+.navbar li:not(:last-child) {
+  border-right: 1px solid white;
+}
+
+.navbar-container {
+  display: block;
+  background-color: #222831;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=main.css.map */

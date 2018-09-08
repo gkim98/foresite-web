@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    list-style: none;
+
+    li,
+    li:link,
+    li:visited {
+        padding: 20px;
+        color: white;
+        height: 80%;
+    }
+
+    li:not(:last-child) {
+        border-right: 1px solid white;
+    }
+}
+
+.navbar-container {
+    display: block;
+    background-color: #222831;
+    margin: 0 auto;
+}

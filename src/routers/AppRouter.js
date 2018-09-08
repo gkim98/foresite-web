@@ -1,10 +1,21 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+import Navbar from '../components/Navbar';
 import MapPage from '../pages/MapPage';
+import TestPage from '../pages/TestPage';
+
+export const history = createHistory();
 
 const AppRouter = () => (
-    <Router>
-        <Route path="/" component={MapPage} exact={true} />
+    <Router history={history}>
+        <div>
+            <Navbar />
+            <div>
+                <Route path="/" component={MapPage} exact={true} />
+                <Route path="/viz" component={TestPage} />
+            </div>
+        </div>
     </Router>
 );
 
