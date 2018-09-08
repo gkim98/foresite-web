@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import pointsReducer from '../reducers/points';
+import reportsReducer from '../reducers/reports';
+import settingsReducer from '../reducers/settings';
 
 export default () => {
     const store = createStore(
         combineReducers({
-            points: pointsReducer
+            reports: reportsReducer,
+            settings: settingsReducer
         }),
         applyMiddleware(thunk)
     );

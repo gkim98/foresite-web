@@ -1,24 +1,25 @@
 import database from '../firebase/firebase';
 
-export const getPoints = (points) => ({
-    type: 'GET_POINTS',
-    points
+export const getReports = (reports) => ({
+    type: 'GET_REPORTS',
+    reports
 });
 
-export const startGetPoints = () => {
+export const startGetReports = () => {
+    console.log('triggered')
     return (dispatch, getState) => {
-        database.ref(`users`).once('value').then((snapshot) => {
-            const points = [];
+        database.ref(`reports`).once('value').then((snapshot) => {
+            const reports = [];
 
             // set writings array same as data on firebase
             snapshot.forEach((childSnap) => {
-                writings.push({
+                reports.push({
                     id: childSnap.key,
                     ...childSnap.val()
                 });
             });
 
-            dispatch(getPoints(points));
+            dispatch(getReports(reports));
         })
     };
 };

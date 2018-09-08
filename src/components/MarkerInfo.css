@@ -1,0 +1,23 @@
+.marker-info {
+    position: absolute;
+    top: 100px;
+    right: 75px;
+    background-color: white;
+    height: 500px; 
+    width: 300px;
+    z-index: 1000;
+    border-radius: 3px;
+    padding: 20px;
+
+    /*animation: fadeIn .5s ease-out;*/
+}
+
+/* @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+} */

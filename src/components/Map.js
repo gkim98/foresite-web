@@ -2,28 +2,39 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps';
 import MapMarker from './MapMarker';
+import MarkerInfo from './MarkerInfo';
 
 const Map = withScriptjs(withGoogleMap((props) => {
 
-    const markers = props.points.map((point, i) => (
-        <MapMarker
-            key={i}
-        />
-    ));
+    const markers = props.reports.map((report, i) => {
+        console.log(report)
+        return (
+            <MapMarker
+                key={i}
+                report={report}
+                position={{lat: report.latitude, lng: report.longitude}}
+            />
+        )
+    });
 
     return (
-        <GoogleMap
-            defaultZoom={14}
-            center={{lat: 42.3601, lng: -71.0589}}
-        >
-
-        </GoogleMap>
+        <div>
+            { props.settings.showMarkerInfo && <MarkerInfo /> }
+            <GoogleMap
+                defaultZoom={15}
+                center={{lat: 39.951544406619306, lng: -75.19083540348124}}
+            >
+                {markers}
+            </GoogleMap>
+        </div>
+        
     );
 }))
 
 const mapStateToProps = (state) => {
     return {
-        points: state.points
+        reports: state.reports,
+        settings: state.settings
     };
 };
 
