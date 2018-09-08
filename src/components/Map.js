@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
+import {connect} from 'react-redux';
+import {withScriptjs, withGoogleMap, GoogleMap} from 'react-google-maps';
 import MapMarker from './MapMarker';
 
 const Map = withScriptjs(withGoogleMap((props) => {
@@ -19,7 +19,7 @@ const Map = withScriptjs(withGoogleMap((props) => {
 
         </GoogleMap>
     );
-})) 
+}))
 
 const mapStateToProps = (state) => {
     return {

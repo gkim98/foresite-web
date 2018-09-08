@@ -9,11 +9,11 @@ import {
 } from "react-google-maps";
 
 const google = window.google;
-const MapWithADirectionsRenderer = compose(
+const MapWithADirectionsRenderer = (coordinates) =>compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=" + GOOGLE_MAP_KEY + "&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{height: `100%`}}/>,
-        containerElement: <div style={{height: `400px`}}/>,
+        containerElement: <div style={{height: `800px`}}/>,
         mapElement: <div style={{height: `100%`}}/>,
     }),
     withScriptjs,
@@ -22,16 +22,25 @@ const MapWithADirectionsRenderer = compose(
         componentDidMount() {
             const DirectionsService = new google.maps.DirectionsService();
             DirectionsService.route({
-                origin: new google.maps.LatLng(41.8507300, -87.6512600),
-                destination: new google.maps.LatLng(41.8525800, -87.6514100),
+                origin: new google.maps.LatLng(originLat, originLng),
+                destination: new google.maps.LatLng(destLat, destLng),
                 travelMode: google.maps.TravelMode.DRIVING,
-            }, (result, status) => {
+                provideRouteAlternatives: true,
+            }, (results, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
+                    console.log(results);
+                    console.log(results.routes);
+                    results.routes.shift();
+                    console.log(results.routes);
+                    for (var i = 0; i < results.routes.length; i++) {
+                        console.log(results.routes[i]);
+                    }
                     this.setState({
-                        directions: result,
+                        directions: results,
+                        directionsRenderer: <DirectionsRenderer directions={results}/>,
                     });
                 } else {
-                    console.error(`error fetching directions ${result}`);
+                    console.error(`error fetching directions ${results}`);
                 }
             });
         }
@@ -39,9 +48,9 @@ const MapWithADirectionsRenderer = compose(
 )(props =>
     <GoogleMap
         defaultZoom={7}
-        defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
+        defaultCenter={new google.maps.LatLng((originLat + destLat) / 2, (originLng + destLng) / 2)}
     >
-        {props.directions && <DirectionsRenderer directions={props.directions}/>}
+        {props.directions && props.directionsRenderer}
     </GoogleMap>
 );
 export default MapWithADirectionsRenderer;
