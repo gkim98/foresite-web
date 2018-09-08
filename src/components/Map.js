@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import MapMarker from './MapMarker';
 import MarkerInfo from './MarkerInfo';
+import { closeMarkerInfo } from '../actions/settings';
 
 const Map = withScriptjs(withGoogleMap((props) => {
 
+    // creates markers from redux store
     const markers = props.reports.map((report, i) => {
         console.log(report)
         return (
@@ -23,6 +25,7 @@ const Map = withScriptjs(withGoogleMap((props) => {
             <GoogleMap
                 defaultZoom={15}
                 center={{lat: 39.951544406619306, lng: -75.19083540348124}}
+                onClick={props.closeMarkerInfo}
             >
                 {markers}
             </GoogleMap>
@@ -38,4 +41,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Map);
+// close marker info window when click off marker
+const mapDispatchToProps = (dispatch) => ({
+    closeMarkerInfo: () => dispatch(closeMarkerInfo())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

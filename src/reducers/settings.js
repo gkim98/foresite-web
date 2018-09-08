@@ -1,5 +1,6 @@
 const settingsReducerDefaultState = {
-    showMarkerInfo: false
+    showMarkerInfo: false,
+    marker: {}
 };
 
 const settingsReducer = (state=settingsReducerDefaultState, action) => {
@@ -8,6 +9,16 @@ const settingsReducer = (state=settingsReducerDefaultState, action) => {
             return {
                 ...state,
                 showMarkerInfo: true
+            }
+        case 'CLOSE_MARKER_INFO':
+            return {
+                ...state,
+                showMarkerInfo: false
+            }
+        case 'UPDATE_MARKER_INFO':
+            return {
+                ...state,
+                marker: action.marker 
             }
         default:
             return state
