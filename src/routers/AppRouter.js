@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import Navbar from '../components/Navbar';
 import MapPage from '../pages/MapPage';
-import TestPage from '../pages/TestPage';
+import DataVisPage from '../pages/DataVisPage';
 
 export const history = createHistory();
 
@@ -13,7 +13,7 @@ const AppRouter = () => (
             <Navbar />
             <div>
                 <Route path="/" component={MapPage} exact={true} />
-                <Route path="/viz" component={TestPage} />
+                <Route path="/viz" component={DataVisPage} />
             </div>
         </div>
     </Router>
