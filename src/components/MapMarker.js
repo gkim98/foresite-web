@@ -1,7 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Marker } from 'react-google-maps';
+
 import { openMarkerInfo, updateMarkerInfo } from '../actions/settings';
+import earthquake from '../assets/earthquake.png';
+import fire from '../assets/fire.png';
+import flood from '../assets/flood.png';
+import other from '../assets/other.png';
+import tsunami from '../assets/tsunami.png';
+
+const iconMapping = {
+    earthquake,
+    fire,
+    flood,
+    other,
+    tsunami
+}
 
 class MapMarker extends React.Component {
     state={
@@ -37,6 +51,7 @@ class MapMarker extends React.Component {
                 position={this.props.position}
                 onClick={this.updateMarkerInfo}
                 opacity={this.state.opacity}
+                icon={iconMapping[this.props.report.disasterType]}
             >
 
             </Marker>
