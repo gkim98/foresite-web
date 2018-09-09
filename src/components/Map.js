@@ -12,24 +12,25 @@ import HeatmapLayer from "react-google-maps/lib/components/visualization/Heatmap
 import MapMarker from './MapMarker';
 import MarkerInfo from './MarkerInfo';
 import { closeMarkerInfo } from '../actions/settings';
-import { watchTaskAddedEvent } from '../actions/reports';
 import {compose, withProps} from "recompose";
 import GOOGLE_MAP_KEY from '../hidden/api_keys';
 
 const hasNotSeenOptions = {
     'gradient': [
-        'rgba(255, 255, 255, 0)',
-        'rgb(232,232,246)',
-        'rgb(209,209,236)',
-        'rgb(185,185,227)',
-        'rgb(162,162,218)',
-        'rgb(139,139,209)',
-        'rgb(116,116,199)',
-        'rgb(93,93,190)',
-        'rgb(70,70,181)',
-        'rgb(46,46,172)',
-        'rgb(23,23,162)',
-        'rgb(0,0,153)'
+        'rgba(0, 255, 255, 0)',
+        'rgba(0, 255, 255, 1)',
+        'rgba(0, 191, 255, 1)',
+        'rgba(0, 127, 255, 1)',
+        'rgba(0, 63, 255, 1)',
+        'rgba(0, 0, 255, 1)',
+        'rgba(0, 0, 223, 1)',
+        'rgba(0, 0, 191, 1)',
+        'rgba(0, 0, 159, 1)',
+        'rgba(0, 0, 127, 1)',
+        'rgba(63, 0, 91, 1)',
+        'rgba(127, 0, 63, 1)',
+        'rgba(191, 0, 31, 1)',
+        'rgba(255, 0, 0, 1)'
     ],
 
     'radius': 50,
@@ -104,8 +105,6 @@ const mapStateToProps = (state) => {
 
 // close marker info window when click off marker
 const mapDispatchToProps = (dispatch) => { 
-
-    watchTaskAddedEvent(dispatch)
     
     return {
         closeMarkerInfo: () => dispatch(closeMarkerInfo())

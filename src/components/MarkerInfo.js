@@ -6,10 +6,6 @@ import {updateRouteDestination} from '../actions/settings';
 class MarkerInfo extends React.Component {
 
     render() {
-        {
-            console.log(this.props)
-        }
-        ;
         return (
             <div className='marker-info'>
                 <p>Disaster type: {this.props.marker.disasterType}</p>

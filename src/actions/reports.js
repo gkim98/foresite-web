@@ -6,7 +6,6 @@ export const getReports = (reports) => ({
 });
 
 export const startGetReports = () => {
-    // console.log('triggered')
     return (dispatch, getState) => {
         database.ref(`reports`).once('value').then((snapshot) => {
             const reports = [];
@@ -25,16 +24,16 @@ export const startGetReports = () => {
 };
 
 // adds report to existing reports in store
-export const addReport = (report) => {
-    type: 'ADD_REPORT',
+export const getReport = (report) => {
+    type: 'GET_REPORT',
     report
 };
 
-export const watchTaskAddedEvent = () => {
-    return (dispatch, getState) => {
-        database.ref('/reports').on('child_added', (snap) => {
-            console.log('snap triggered')
-            dispatch(addReport(snap.val()))
+export function watchReportAddedEvent() {
+    return function(dispatch) {
+        database.ref(`/reports`).on('child_added', (snap) => {  
+            console.log(snap.val())  
+            dispatch(getReport(snap.val()));
         })
-    };
+    }
 }

@@ -7,23 +7,17 @@ import Map from './Map';
 import {startGetReports} from '../actions/reports';
 import GOOGLE_MAP_KEY from '../hidden/api_keys';
 import MarkerInfo from './MarkerInfo';
+import database from '../firebase/firebase';
+import { watchReportAddedEvent } from '../actions/reports';
 
 
 const google = window.google;
 class MapContainer extends React.Component {
     state = {
-        directions: null,
-        lastDestination: null
+        directions: null
     }
 
-    componentDidMount() {
-        this.props.getReports();
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            lastDestination: this.props.settings.destination
-        });
+    componentWillUpdate() {
         this.createRoute()
     }
 
@@ -72,8 +66,10 @@ const mapStateToProps = (state) => {
 };
 
 // retrieves reports for markers
-const mapDispatchToProps = (dispatch) => ({
-    getReports: () => dispatch(startGetReports())
-});
+const mapDispatchToProps = (dispatch) => {
+    //dispatch(startGetReports())
+    dispatch(watchReportAddedEvent())
+    return { }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);
