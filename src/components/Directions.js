@@ -9,7 +9,9 @@ import {
 } from "react-google-maps";
 
 const google = window.google;
-const MapWithADirectionsRenderer = (originLat, originLng, destLat, destLng) => compose(
+const originLat = 39.950467, originLng = -75.193714, destLat = 39.952647, destLng = -75.190943;
+
+const MapWithADirectionsRenderer = compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=" + GOOGLE_MAP_KEY + "&v=3.exp&libraries=visualization,geometry,drawing,places",
         loadingElement: <div style={{height: `100%`}}/>,
@@ -22,8 +24,8 @@ const MapWithADirectionsRenderer = (originLat, originLng, destLat, destLng) => c
         componentDidMount() {
             const DirectionsService = new google.maps.DirectionsService();
             DirectionsService.route({
-                origin: new google.maps.LatLng(originLat, originLng),
-                destination: new google.maps.LatLng(destLat, destLng),
+                origin: new google.maps.LatLng(39.950467, -75.193714),
+                destination: new google.maps.LatLng(39.952647,  -75.190943),
                 travelMode: google.maps.TravelMode.DRIVING,
                 provideRouteAlternatives: true,
             }, (results, status) => {
@@ -48,10 +50,9 @@ const MapWithADirectionsRenderer = (originLat, originLng, destLat, destLng) => c
 )(props =>
     <GoogleMap
         defaultZoom={7}
-        defaultCenter={new google.maps.LatLng((originLat + destLat) / 2, (originLng + destLng) / 2)}
+        defaultCenter={new google.maps.LatLng((39.950467 + 39.952647) / 2, (-75.193714 +  -75.190943) / 2)}
     >
         {props.directions && props.directionsRenderer}
     </GoogleMap>
-
 );
 export default MapWithADirectionsRenderer;
