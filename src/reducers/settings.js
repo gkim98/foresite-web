@@ -22,7 +22,6 @@ const settingsReducer = (state=settingsReducerDefaultState, action) => {
                 marker: action.marker 
             }
         case 'UPDATE_ROUTE_DESTINATION':
-            console.log('update route')
             return {
                 ...state,
                 destination: action.marker
