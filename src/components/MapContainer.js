@@ -1,10 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import {DirectionsRenderer} from 'react-google-maps';
+import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
 
 import Map from './Map';
+import {startGetReports} from '../actions/reports';
+import GOOGLE_MAP_KEY from '../hidden/api_keys';
 import MarkerInfo from './MarkerInfo';
-import { startGetReports } from '../actions/reports';
-import { DirectionsRenderer } from 'react-google-maps';
+
 
 const google = window.google;
 class MapContainer extends React.Component {
@@ -45,13 +48,14 @@ class MapContainer extends React.Component {
     }
 
     render() {
-
         return (
             <div>
                 { this.props.settings.showMarkerInfo && <MarkerInfo /> }
                 <Map 
                     direction={this.state.directions}
                 />
+                {this.props.settings.showMarkerInfo && <MarkerInfo/>}
+
             </div>
         )
     }

@@ -14,6 +14,9 @@ class App extends Component {
             </Provider>
         );
     }
+    // render() {
+    //     return (<DirectionsPage/>);
+    // }
 }
 
 export default App;

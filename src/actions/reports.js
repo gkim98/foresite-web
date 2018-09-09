@@ -6,7 +6,7 @@ export const getReports = (reports) => ({
 });
 
 export const startGetReports = () => {
-    console.log('triggered')
+    // console.log('triggered')
     return (dispatch, getState) => {
         database.ref(`reports`).once('value').then((snapshot) => {
             const reports = [];
