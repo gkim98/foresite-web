@@ -37,7 +37,7 @@ html {
 }
 
 .menu__flex-container {
-  background: black;
+  background: #262626;
   position: block;
   height: 10vh;
   width: 100vw;
