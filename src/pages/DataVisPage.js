@@ -1388,76 +1388,87 @@ var graphs = {
         data={data[1]["data"]}
         layout={data[1]["layout"]}
         useResizeHandler={true}
-        style={{width: "100%", height: "100%"}}
+        style={{width: "100%", height: "100%", flex: "1"}}
     />,
     2: <Plot
         data={data[2]["data"]}
         layout={data[2]["layout"]}
         useResizeHandler={true}
-        style={{width: "100%", height: "100%"}}
+        style={{width: "100%", height: "100%", flex: "1"}}
     />,
     3: <Plot
         data={data[3]["data"]}
         layout={data[3]["layout"]}
         useResizeHandler={true}
-        style={{width: "100%", height: "100%"}}
+        style={{width: "100%", height: "100%", flex: "1"}}
     />,
     4: <Plot
         data={data[4]["data"]}
         layout={data[4]["layout"]}
         useResizeHandler={true}
-        style={{width: "100%", height: "100%"}}
+        style={{width: "100%", height: "100%", flex: "1"}}
     />,
     5: <Plot
         data={data[5]["data"]}
         layout={data[5]["layout"]}
         useResizeHandler={true}
-        style={{width: "100%", height: "100%"}}
+        style={{width: "100%", height: "100%", flex: "1"}}
     />,
 };
 
 class DataVisPage extends React.Component {
-    state = {
-        age: '',
-        name: '',
-        graph: graphs[4],
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: 2,
+            graph: graphs[2],
+        };
+    }
+    
 
 
     handleChange = event => {
+       
         this.setState({[event.target.name]: event.target.value, graph: graphs[event.target.value]});
     };
 
     render() {
         return (
-            <Grid container spacing={24}>
+            <div>
+             {/* <Grid container spacing={24}> */}
                 <Grid item xs={12}>
 
-                    <FormControl>
-                        <InputLabel htmlFor="name-simple">Graph</InputLabel>
-                        <Select
-                            value={this.state.name}
-                            onChange={this.handleChange}
-                            inputProps={{
-                                name: 'name',
-                                id: 'name-simple',
-                            }}
-                        >
-                            <MenuItem value={4}>Precipitation</MenuItem>
-                            <MenuItem value={5}>Land Flooding</MenuItem>
-                            <MenuItem value={3}>Earthquake Comparison</MenuItem>
-                            <MenuItem value={2}>Country Supplies</MenuItem>
-                            <MenuItem value={1}>Wildfires</MenuItem>
+                    <div style={{paddingTop:"2rem", width:"50vw", display:"block", margin:"auto"}}>
+                        <FormControl style={{width: "50vw"}}>
+                            <InputLabel htmlFor="name-simple">Graph</InputLabel>
+                            <Select
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                                inputProps={{
+                                    name: 'name',
+                                    id: 'name-simple',
+                                }}
+                            >
+                                <MenuItem value={2}>Country Supplies</MenuItem>
+                                <MenuItem value={4}>Precipitation</MenuItem>
+                                <MenuItem value={5}>Land Flooding</MenuItem>
+                                <MenuItem value={3}>Earthquake Comparison</MenuItem>
+                                <MenuItem value={1}>Wildfires</MenuItem>
 
-                        </Select>
+                            </Select>
 
-                    </FormControl>
+                        </FormControl>
+                    </div>
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}> */}
+                <div className="flex-graph">
                     {this.state.graph}
-                </Grid>
-            </Grid>
-
+                </div>
+                    
+                {/* </Grid> */}
+           {/* </Grid> */}
+            </div>
         );
     }
 }

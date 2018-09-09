@@ -8,9 +8,15 @@ class MarkerInfo extends React.Component {
     render() {
         return (
             <div className='marker-info'>
-                <p>Disaster type: {this.props.marker.disasterType}</p>
-                <p>Coordinates: [{this.props.marker.latitude}, {this.props.marker.longitude}]</p>
-                <p>Time: {this.props.marker.time}</p>
+                <h3>Disaster type: </h3>
+                <p>{this.props.marker.disasterType}</p>
+
+                <h3>Coordinates:</h3>
+                <p>[{this.props.marker.latitude}, {this.props.marker.longitude}]</p>
+                
+                <h3>Time:</h3>
+                <p>{this.props.marker.time}</p>
+
                 <button onClick={() => {
                     this.props.updateRouteDestination(this.props.marker)
                 }}>Route Here

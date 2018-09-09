@@ -11,6 +11,12 @@
     padding: 20px;
 
     animation: fadeIn .3s ease-out;
+
+    
+}
+
+.marker-info h3 {
+    margin-bottom: 0;
 }
 
 @keyframes fadeIn {
