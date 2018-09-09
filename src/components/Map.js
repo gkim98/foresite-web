@@ -2,10 +2,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    withScriptjs, 
-    withGoogleMap, 
+    withScriptjs,
+    withGoogleMap,
     GoogleMap,
-    DirectionsRenderer } from 'react-google-maps';
+    DirectionsRenderer
+} from 'react-google-maps';
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
 
 import MapMarker from './MapMarker';
@@ -15,7 +16,7 @@ import { watchTaskAddedEvent } from '../actions/reports';
 import {compose, withProps} from "recompose";
 import GOOGLE_MAP_KEY from '../hidden/api_keys';
 
-const options = {
+const hasNotSeenOptions = {
     'gradient': [
         'rgba(255, 255, 255, 0)',
         'rgb(232,232,246)',
@@ -30,24 +31,36 @@ const options = {
         'rgb(23,23,162)',
         'rgb(0,0,153)'
     ],
+
+    'radius': 50,
+    'opacity': 0.8
+};
+const hasSeenOptions = {
+
     'radius': 50,
     'opacity': 0.8
 };
 
 const mapEnvironment = compose(
     withProps({
-        containerElement: <div style={{ height: `600px`, width: `100%` }} />,
-        mapElement: <div style={{ height: `100%` }} />
+        containerElement: <div style={{height: `600px`, width: `100%`}}/>,
+        mapElement: <div style={{height: `100%`}}/>
     }),
     withGoogleMap
 );
 
 const MapLayout = (props) => {
-    const data = [];
+    const hasNotSeenData = [];
+    const hasSeenData = [];
     // creates markers from redux store
     const markers = props.reports.map((report, i) => {
-        
-        data.push(new google.maps.LatLng(report.latitude, report.longitude));
+        if (report.hasSeen) {
+            hasSeenData.push(new google.maps.LatLng(report.latitude, report.longitude));
+        }
+        else {
+            hasNotSeenData.push(new google.maps.LatLng(report.latitude, report.longitude));
+        }
+        // console.log(report);
         return (
             <MapMarker
                 key={report.id}
@@ -60,16 +73,20 @@ const MapLayout = (props) => {
     return (
         <div>
             <GoogleMap
-                defaultZoom={15}
+                defaultZoom={17}
                 center={{lat: 39.951544406619306, lng: -75.19083540348124}}
                 onClick={props.closeMarkerInfo}
             >
                 {markers}
                 <HeatmapLayer
-                    options={options}
-                    data={data}
+                    options={hasNotSeenOptions}
+                    data={hasNotSeenData}
                 />
-                {props.direction && <DirectionsRenderer directions={props.direction} />}
+                <HeatmapLayer
+                    options={hasSeenOptions}
+                    data={hasSeenData}
+                />
+                {props.direction && <DirectionsRenderer directions={props.direction}/>}
             </GoogleMap>
         </div>
 
