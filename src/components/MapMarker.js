@@ -8,6 +8,7 @@ import fire from '../assets/fire.png';
 import flood from '../assets/flood.png';
 import other from '../assets/other.png';
 import tsunami from '../assets/tsunami.png';
+import request from '../assets/request.png';
 
 const google = window.google;
 const iconMapping = {
@@ -15,7 +16,8 @@ const iconMapping = {
     fire,
     flood,
     other,
-    tsunami
+    tsunami,
+    request
 };
 
 class MapMarker extends React.Component {

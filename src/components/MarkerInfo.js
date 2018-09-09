@@ -8,8 +8,8 @@ class MarkerInfo extends React.Component {
     render() {
         return (
             <div className='marker-info'>
-                <h3>Disaster type: </h3>
-                <p>{this.props.marker.disasterType}</p>
+                <h3>{this.props.marker.disasterType==='request' ? 'Request type:' : 'Disaster type:' }</h3>
+                <p>{this.props.marker.disasterType==='request' ? 'medical' : this.props.marker.disasterType}</p>
 
                 <h3>Coordinates:</h3>
                 <p>[{this.props.marker.latitude}, {this.props.marker.longitude}]</p>

@@ -52,17 +52,17 @@ const MapLayout = (props) => {
     const hasSeenData = [];
     // creates markers from redux store
     const markers = props.reports.map((report, i) => {
-        if (report.hasSeen) {
+        if (report.hasSeen && report.disasterType !== "request") {
             hasSeenData.push(new google.maps.LatLng(report.latitude, report.longitude));
         }
-        else {
+        else if (report.disasterType !== "request"){
             hasNotSeenData.push(new google.maps.LatLng(report.latitude, report.longitude));
         }
         return (
             <MapMarker
                 key={report.uniqueID}
                 report={report}
-                position={{lat: report.latitude, lng: report.longitude}}
+                // position={{lat: report.latitude, lng: report.longitude}}
             />
         )
     });
