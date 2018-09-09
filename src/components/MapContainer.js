@@ -12,39 +12,42 @@ import MarkerInfo from './MarkerInfo';
 const google = window.google;
 class MapContainer extends React.Component {
     state = {
-        directions: null
+        directions: null,
+        lastDestination: null
     }
 
     componentDidMount() {
         this.props.getReports();
     }
 
-    componentDidUpdate() {
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            lastDestination: this.props.settings.destination
+        });
         this.createRoute()
     }
 
     createRoute = () => {
         console.log('createTriggered')
-        console.log(this.props.settings.destination.longitude)
-        console.log(this.state.directions)
+        if(this.props.settings.destination.latitude) {
+            const DirectionsService = new google.maps.DirectionsService();  
 
-        const DirectionsService = new google.maps.DirectionsService();  
-
-        DirectionsService.route({
-            origin: new google.maps.LatLng(39.9495, -75.193061),
-            destination: new google.maps.LatLng(this.props.settings.destination.latitude, 
-                this.props.settings.destination.longitude),
-            travelMode: google.maps.TravelMode.DRIVING,
-        }, (result, status) => {
-            console.log(result);
-            if (status === google.maps.DirectionsStatus.OK) {
-                this.setState({
-                    directions: result,
-                });
-            } else {
-                console.error(`error fetching directions ${result}`);
-            }
-        });
+            DirectionsService.route({
+                origin: new google.maps.LatLng(39.9495, -75.193061),
+                destination: new google.maps.LatLng(this.props.settings.destination.latitude, 
+                    this.props.settings.destination.longitude),
+                travelMode: google.maps.TravelMode.DRIVING,
+            }, (result, status) => {
+                console.log(result);
+                if (status === google.maps.DirectionsStatus.OK) {
+                    this.setState({
+                        directions: result,
+                    });
+                } else {
+                    console.error(`error fetching directions ${result}`);
+                }
+            });
+        }
     }
 
     render() {

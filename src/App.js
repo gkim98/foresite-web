@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import './css/main.css';
 import 'normalize.css';
 import AppRouter from './routers/AppRouter';
-import DirectionsPage from './pages/DirectionsPage'
 
 class App extends Component {
     render() {
@@ -14,9 +13,6 @@ class App extends Component {
             </Provider>
         );
     }
-    // render() {
-    //     return (<DirectionsPage/>);
-    // }
 }
 
 export default App;

@@ -23,3 +23,18 @@ export const startGetReports = () => {
         })
     };
 };
+
+// adds report to existing reports in store
+export const addReport = (report) => {
+    type: 'ADD_REPORT',
+    report
+};
+
+export const watchTaskAddedEvent = () => {
+    return (dispatch, getState) => {
+        database.ref('/reports').on('child_added', (snap) => {
+            console.log('snap triggered')
+            dispatch(addReport(snap.val()))
+        })
+    };
+}

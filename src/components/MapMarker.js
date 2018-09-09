@@ -25,7 +25,7 @@ class MapMarker extends React.Component {
 
     componentDidUpdate() {
         // identifies selected marker with opacity
-        if (this.props.settings.marker.id == this.props.report.id) {
+        if (this.props.settings.marker.id === this.props.report.id) {
             if (this.state.opacity == 1) {
                 this.setState({
                     opacity: .8
