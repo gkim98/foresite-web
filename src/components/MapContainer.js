@@ -25,7 +25,7 @@ class MapContainer extends React.Component {
             const DirectionsService = new google.maps.DirectionsService();  
 
             DirectionsService.route({
-                origin: new google.maps.LatLng(39.9495, -75.193061),
+                origin: new google.maps.LatLng(39.950436, -75.193884),
                 destination: new google.maps.LatLng(this.props.settings.destination.latitude, 
                     this.props.settings.destination.longitude),
                 travelMode: google.maps.TravelMode.DRIVING,
