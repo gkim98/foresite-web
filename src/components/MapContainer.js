@@ -4,17 +4,15 @@ import {DirectionsRenderer} from 'react-google-maps';
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
 
 import Map from './Map';
-import {startGetReports} from '../actions/reports';
-import GOOGLE_MAP_KEY from '../hidden/api_keys';
 import MarkerInfo from './MarkerInfo';
-import database from '../firebase/firebase';
 import { watchReportAddedEvent } from '../actions/reports';
-
 
 const google = window.google;
 class MapContainer extends React.Component {
     state = {
-        directions: null
+        directions: null,
+        mapLat: 39.951544406619306,
+        mapLong: -75.19083540348124
     }
 
     componentWillUpdate() {
@@ -22,8 +20,8 @@ class MapContainer extends React.Component {
     }
 
     createRoute = () => {
-        console.log('createTriggered')
-        if(this.props.settings.destination.latitude) {
+        console.log(this.props.settings.destination)
+        if(this.props.settings.destination.uniqueID != null) {
             const DirectionsService = new google.maps.DirectionsService();  
 
             DirectionsService.route({
@@ -67,7 +65,6 @@ const mapStateToProps = (state) => {
 
 // retrieves reports for markers
 const mapDispatchToProps = (dispatch) => {
-    //dispatch(startGetReports())
     dispatch(watchReportAddedEvent())
     return { }
 };

@@ -6,7 +6,6 @@ const reportsReducer = (state = reportsReducerDefaultState, action) => {
         case 'GET_REPORTS':
             return action.reports
         case 'GET_REPORT':
-            console.log('hello')
             return [...state, action.report]
         default:
             return state

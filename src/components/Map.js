@@ -2,7 +2,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    withScriptjs,
     withGoogleMap,
     GoogleMap,
     DirectionsRenderer
@@ -10,10 +9,8 @@ import {
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
 
 import MapMarker from './MapMarker';
-import MarkerInfo from './MarkerInfo';
 import { closeMarkerInfo } from '../actions/settings';
 import {compose, withProps} from "recompose";
-import GOOGLE_MAP_KEY from '../hidden/api_keys';
 
 const hasNotSeenOptions = {
     'gradient': [
@@ -61,10 +58,9 @@ const MapLayout = (props) => {
         else {
             hasNotSeenData.push(new google.maps.LatLng(report.latitude, report.longitude));
         }
-        // console.log(report);
         return (
             <MapMarker
-                key={report.id}
+                key={report.uniqueID}
                 report={report}
                 position={{lat: report.latitude, lng: report.longitude}}
             />
@@ -74,8 +70,9 @@ const MapLayout = (props) => {
     return (
         <div>
             <GoogleMap
-                defaultZoom={17}
-                center={{lat: 39.951544406619306, lng: -75.19083540348124}}
+                defaultZoom={15.5}
+                defaultCenter={{lat: 39.951544406619306, lng: -75.19083540348124}}
+                //center={{lat: this.refs.map.getCenter(), lng: this.refs.map.getCenter()}}
                 onClick={props.closeMarkerInfo}
             >
                 {markers}
