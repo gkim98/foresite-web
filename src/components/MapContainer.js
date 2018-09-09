@@ -15,13 +15,14 @@ class MapContainer extends React.Component {
         mapLong: -75.19083540348124
     }
 
-    componentWillUpdate() {
-        this.createRoute()
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.createRoute(prevProps.settings.destination.uniqueID, 
+            this.props.settings.destination.uniqueID)
     }
 
-    createRoute = () => {
-        console.log(this.props.settings.destination)
-        if(this.props.settings.destination.uniqueID != null) {
+    createRoute = (prevDest, currDest) => {
+        if(this.props.settings.destination.uniqueID != null 
+            && (prevDest != currDest)) {
             const DirectionsService = new google.maps.DirectionsService();  
 
             DirectionsService.route({
@@ -30,7 +31,6 @@ class MapContainer extends React.Component {
                     this.props.settings.destination.longitude),
                 travelMode: google.maps.TravelMode.DRIVING,
             }, (result, status) => {
-                console.log(result);
                 if (status === google.maps.DirectionsStatus.OK) {
                     this.setState({
                         directions: result,
