@@ -10,3 +10,4 @@ export const updateMarkerInfo = (marker) => ({
     type: 'UPDATE_MARKER_INFO',
     marker
 });
+

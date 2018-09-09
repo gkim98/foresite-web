@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    withScriptjs, 
     withGoogleMap, 
     GoogleMap, 
     DirectionsRenderer} from 'react-google-maps';
@@ -13,12 +12,9 @@ import GOOGLE_MAP_KEY from '../hidden/api_keys';
 const google = window.google;
 const mapEnvironment = compose(
         withProps({
-            googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_KEY}&v=3.exp&libraries=geometry,drawing,places`,
-            loadingElement: <div style={{ height: `100%` }} />,
             containerElement: <div style={{ height: `600px`, width: `100%` }} />,
             mapElement: <div style={{ height: `100%` }} />
         }),
-        //withScriptjs,
         withGoogleMap,
         lifecycle({
             componentDidMount() {
@@ -44,15 +40,15 @@ const mapEnvironment = compose(
 
 const MapLayout = (props) => {
     // creates markers from redux store
-    // const markers = props.reports.map((report, i) => {
-    //     return (
-    //         <MapMarker
-    //             key={i}
-    //             report={report}
-    //             position={{lat: report.latitude, lng: report.longitude}}
-    //         />
-    //     )
-    // });
+    const markers = props.reports.map((report, i) => {
+        return (
+            <MapMarker
+                key={i}
+                report={report}
+                position={{lat: report.latitude, lng: report.longitude}}
+            />
+        )
+    });
 
     return (
         <GoogleMap
@@ -60,6 +56,7 @@ const MapLayout = (props) => {
             center={{lat: 39.951544406619306, lng: -75.19083540348124}}
             onClick={props.closeMarkerInfo}
         >
+            {markers}
             {props.directions && <DirectionsRenderer directions={props.directions} />}
         </GoogleMap>
     );
