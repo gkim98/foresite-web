@@ -171,8 +171,6 @@ var data = {
                 "autorange": true,
                 "title": "Number of Fires"
             },
-            "height": 930,
-            "width": 1620,
             "xaxis": {
                 "range": [
                     1988.3267898383372,
@@ -227,8 +225,6 @@ var data = {
                 "showcountries": true,
 
             },
-            "height": 800,
-            "width": 1000,
             "autosize": true,
             "showlegend": false
         }
@@ -303,8 +299,6 @@ var data = {
                 "title": "Magnitude of Earthquake"
             },
             "showlegend": false,
-            "height": 524,
-            "width": 1048,
             "xaxis": {
                 "range": [
                     -0.696,
@@ -1279,8 +1273,6 @@ var data = {
             "plot_bgcolor": "#fff",
             "dragmode": "zoom",
             "separators": ".,",
-            "height": 561,
-            "width": 921,
             "legend": {
                 "bordercolor": "#444",
                 "traceorder": "normal",
@@ -1379,8 +1371,6 @@ var data = {
                 "title": "Land Covered (m)"
             },
             "showlegend": false,
-            "height": 534,
-            "width": 927,
             "xaxis": {
                 "range": [
                     -0.09248681898066785,
@@ -1397,22 +1387,32 @@ var graphs = {
     1: <Plot
         data={data[1]["data"]}
         layout={data[1]["layout"]}
+        useResizeHandler={true}
+        style={{width: "100%", height: "100%"}}
     />,
     2: <Plot
         data={data[2]["data"]}
         layout={data[2]["layout"]}
+        useResizeHandler={true}
+        style={{width: "100%", height: "100%"}}
     />,
     3: <Plot
         data={data[3]["data"]}
         layout={data[3]["layout"]}
+        useResizeHandler={true}
+        style={{width: "100%", height: "100%"}}
     />,
     4: <Plot
         data={data[4]["data"]}
         layout={data[4]["layout"]}
+        useResizeHandler={true}
+        style={{width: "100%", height: "100%"}}
     />,
     5: <Plot
         data={data[5]["data"]}
         layout={data[5]["layout"]}
+        useResizeHandler={true}
+        style={{width: "100%", height: "100%"}}
     />,
 };
 
