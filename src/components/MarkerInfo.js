@@ -1,17 +1,24 @@
 import React from 'react';
 import './MarkerInfo.css';
-import { connect } from 'react-redux';
-import { updateRouteDestination } from '../actions/settings';
+import {connect} from 'react-redux';
+import {updateRouteDestination} from '../actions/settings';
 
 class MarkerInfo extends React.Component {
 
     render() {
+        {
+            console.log(this.props)
+        }
+        ;
         return (
             <div className='marker-info'>
-                <p>{this.props.marker.latitude}</p>
+                <p>Disaster type: {this.props.marker.disasterType}</p>
+                <p>Coordinates: [{this.props.marker.latitude}, {this.props.marker.longitude}]</p>
+                <p>Time: {this.props.marker.time}</p>
                 <button onClick={() => {
                     this.props.updateRouteDestination(this.props.marker)
-                }}>Route Here</button>
+                }}>Route Here
+                </button>
             </div>
         )
     }
