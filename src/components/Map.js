@@ -62,7 +62,7 @@ const MapLayout = (props) => {
             <MapMarker
                 key={report.uniqueID}
                 report={report}
-                // position={{lat: report.latitude, lng: report.longitude}}
+                position={{lat: report.latitude, lng: report.longitude}}
             />
         )
     });

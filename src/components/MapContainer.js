@@ -10,13 +10,7 @@ import {watchReportAddedEvent} from '../actions/reports';
 const google = window.google;
 
 var waypts = [{
-    location: new google.maps.LatLng(39.951360, -75.190471),
-    stopover: true
-}, {
-    location: new google.maps.LatLng(39.953477, -75.189833),
-    stopover: true
-},{
-    location: new google.maps.LatLng(39.954740, -75.191697),
+    location: new google.maps.LatLng(39.953812, -75.198529),
     stopover: true
 },];
 

@@ -17,6 +17,9 @@ class MarkerInfo extends React.Component {
                 <h3>Time:</h3>
                 <p>{this.props.marker.time}</p>
 
+                <h3>Comments:</h3>
+                <p>{this.props.marker.comment}</p>
+
                 <button onClick={() => {
                     this.props.updateRouteDestination(this.props.marker)
                 }}>Route Here
