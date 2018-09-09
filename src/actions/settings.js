@@ -11,3 +11,7 @@ export const updateMarkerInfo = (marker) => ({
     marker
 });
 
+export const updateRouteDestination = (marker) => ({
+    type: 'UPDATE_ROUTE_DESTINATION',
+    marker
+});

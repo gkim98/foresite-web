@@ -1,6 +1,7 @@
 import React from 'react';
 import './MarkerInfo.css';
 import { connect } from 'react-redux';
+import { updateRouteDestination } from '../actions/settings';
 
 class MarkerInfo extends React.Component {
 
@@ -8,6 +9,9 @@ class MarkerInfo extends React.Component {
         return (
             <div className='marker-info'>
                 <p>{this.props.marker.latitude}</p>
+                <button onClick={() => {
+                    this.props.updateRouteDestination(this.props.marker)
+                }}>Route Here</button>
             </div>
         )
     }
@@ -20,4 +24,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(MarkerInfo);
+// change route destination in store
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateRouteDestination: (marker) => dispatch(updateRouteDestination(marker))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MarkerInfo);

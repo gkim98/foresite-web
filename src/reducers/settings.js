@@ -1,6 +1,7 @@
 const settingsReducerDefaultState = {
     showMarkerInfo: false,
-    marker: {}
+    marker: {},
+    destination: {}
 };
 
 const settingsReducer = (state=settingsReducerDefaultState, action) => {
@@ -19,6 +20,12 @@ const settingsReducer = (state=settingsReducerDefaultState, action) => {
             return {
                 ...state,
                 marker: action.marker 
+            }
+        case 'UPDATE_ROUTE_DESTINATION':
+            console.log('update route')
+            return {
+                ...state,
+                destination: action.marker
             }
         default:
             return state
