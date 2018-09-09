@@ -214,7 +214,7 @@ var data = {
             }
         ],
         "layout": {
-            "title": "Bubble Map for Countries",
+            "title": "Country Supplies",
             "geo": {
                 "projection": {
                     "type": "natural earth"
@@ -1446,7 +1446,7 @@ class DataVisPage extends React.Component {
                             <MenuItem value={4}>Precipitation</MenuItem>
                             <MenuItem value={5}>Land Flooding</MenuItem>
                             <MenuItem value={3}>Earthquake Comparison</MenuItem>
-                            <MenuItem value={2}>Country Bubblemap</MenuItem>
+                            <MenuItem value={2}>Country Supplies</MenuItem>
                             <MenuItem value={1}>Wildfires</MenuItem>
 
                         </Select>

@@ -17,10 +17,8 @@ class MapContainer extends React.Component {
     }
 
     render() {
-
         return (
             <div>
-
                 <Map
                     reports={this.props.reports}
                     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_KEY}&v=3.exp&libraries=geometry,drawing,places,visualization`}
