@@ -43,7 +43,7 @@ const hasSeenOptions = {
 
 const mapEnvironment = compose(
     withProps({
-        containerElement: <div style={{height: `600px`, width: `100%`}}/>,
+        containerElement: <div style={{height: `90vh`, width: `100%`}}/>,
         mapElement: <div style={{height: `100%`}}/>
     }),
     withGoogleMap
