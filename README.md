@@ -1,6 +1,5 @@
 # Foresite
 Foresite is a platform that uses crowd-sourcing to quickly spread news during times of crises and helps first responders asses the situation. 
-
 ![](foresite-image.png)
 
 # Inspiration
