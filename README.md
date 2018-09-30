@@ -1,6 +1,8 @@
 # Foresite
 Foresite is a platform that uses crowd-sourcing to quickly spread news during times of crises and helps first responders asses the situation. 
 
+![](foresite-image.png)
+
 # Inspiration
 During the information session presented by the Wharton Risk Center, we were inspired by the story of a little girl who recognized the early signs of a tsunami but found difficulty in spreading awareness. After finally contacting the right person, they managed to get everyone off the beach and it became the only place where no one died to the tsunami. Other problems found were a lack of data involving the extent of flooded areas and other natural disasters, and difficulties in safely delivering supplies to sites in areas affected by diasters. We wanted to build a solution that gives users the power to alert others to disasters who are within close proximity, collects missing data in a non-intrusive manner, and provides critical support and directions during disasters.
 
@@ -14,4 +16,5 @@ Delivering supplies to sites can be dangerous, so first responders need a safe a
 
 ## Mobile Application
 https://github.com/shavavo/foresite
+
 We connect our users. Our iOS mobile app gives users the power to report a disaster in their area, whether it's flooding, fire, earthquake, tsunami, etc. Other users of the application within a certain radius is notified of a potential threat. They can quickly and conveniently respond yes or no with two clicks of the notification. Whether they answer yes, no, or no response, the data is stored and mapped on our web application. After sending a report, the application offers tips and resources for staying safe, and the user can prepare accordingly for the disaster.
